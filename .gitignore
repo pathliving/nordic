@@ -1,9 +1,43 @@
+# node_modules/
+public/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+.npmrc
+.swc
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .idea
 .vscode
 .DS_Store
-.next
-.env
-.npmrc
+*.pem
 
-node_modules/
-public/
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+#.env*.local
+.env*
+!.env*.template
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

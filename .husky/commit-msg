@@ -1,0 +1,17 @@
+regex_issue_number='\(in-[0-9]+\)'
+regex_skip_auto_commit='(Merge remote-tracking branch)|(Merge branch)|Revert|\[skip ci\]'
+error_message="Abort commit. Your commit message must contain an issue number, e.g. (in-001)"
+
+# throw an error if you forget to write the issue number in commit message, like "(in-001)"
+if ! grep -iqE "$regex_issue_number" "$1"; then
+    echo "$error_message"
+    exit 1
+fi
+
+# skip auto-commits, like "Merge remote-tracking branch" OR "Merge branch" OR "Revert" OR "[skip-ci]"
+if grep -iqE "$regex_skip_auto_commit" "$1"; then
+    exit 0
+fi
+
+# check the prefix of commit message, like "revert: release 2.0.5"
+npx --no -- commitlint --edit
