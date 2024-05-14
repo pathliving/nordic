@@ -1,12 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  /* typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  }, */
-};
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 
-module.exports = nextConfig;
+const withVanillaExtract = createVanillaExtractPlugin();
+
+const nextConfig = {};
+
+export default withVanillaExtract(nextConfig);

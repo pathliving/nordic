@@ -6,7 +6,6 @@ public/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-.npmrc
 .swc
 
 # testing
