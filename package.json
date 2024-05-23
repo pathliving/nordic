@@ -2,6 +2,8 @@
   "name": "nordic",
   "version": "0.1.0",
   "private": true,
+  "author": "Andrii Hrynenko",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "init": "cp .env.template .env && cp .env.production.template .env.production && cp .env.development.template .env.development && cp .env.local.template .env.local",
