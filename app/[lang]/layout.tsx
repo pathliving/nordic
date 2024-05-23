@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Nordic App',
   description: 'Experimental project',
   // image: '/image.jpg',
-  metadataBase: new URL('https://nordic-app.com'),
+  metadataBase: new URL('https://nordic.io'),
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -68,11 +68,11 @@ export const metadata: Metadata = {
   },
 };
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { lang },
 }: {
@@ -80,7 +80,11 @@ export default async function RootLayout({
   params: { lang: Locale };
 }) {
   return (
-    <html lang={lang}>
+    <html
+      lang={lang}
+      className="dark"
+      style={{ colorScheme: 'dark' }}
+    >
       <body className={inter.className}>
         <StoreProvider>
           <Theme appearance="dark">
