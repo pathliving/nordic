@@ -7,7 +7,7 @@ describe('pow', () => {
 
   describe('raise a number to n-pow', () => {
     function makePow(x: number) {
-      let expected = x * x * x;
+      const expected = x * x * x;
       it(`{x}raise a number to pow 3 is equal ${expected}`, () => {
         expect(pow(x, 3)).toBe(expected);
       });

@@ -29,7 +29,8 @@ const ThemeSwitcher = () => {
       updateThemeAppearanceClass(theme);
     }
 
-    console.log({ appearance, rest, selectedTheme, theme });
+    // console.log({ appearance, rest, selectedTheme, theme });
+    return { appearance, rest };
   };
 
   return theme === 'light' ? (

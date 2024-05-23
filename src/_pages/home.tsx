@@ -11,7 +11,7 @@ import Text from '@/shared/ui/Text/Text';
 import { useDispatch, useSelector } from 'react-redux';
 import { StateType } from '../../app/[lang]/reducers';
 import { getTodosAction } from '../../app/[lang]/todos.slice';
-// import { getDictionary } from '../../get-dictionary';
+import { dictionaryType } from '../../getDictionary';
 
 export default function Home({
   dictionary,
@@ -19,8 +19,7 @@ export default function Home({
   // dictionary: ReturnType<typeof getDictionary>;
   // dictionary: Promise<typeof getDictionary>;
   // dictionary: typeof getDictionary;
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
-  dictionary: any;
+  dictionary: dictionaryType;
 }) {
   const {
     todos: { data, isLoading },

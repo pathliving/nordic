@@ -4,6 +4,7 @@ import { Form, FormField, FormSubmit } from '@/shared/ui/Form/Form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { button } from './LoginForm.css';
 
 const accountFormSchema = z.object({
   name: z
@@ -30,8 +31,10 @@ const LoginForm = () => {
   });
   const { control, handleSubmit } = form;
 
+  // TODO: make this func async
   const onSubmit = (data: AccountFormValues) => {
-    console.log({ data });
+    // console.log({ data });
+    return data;
   };
 
   return (
@@ -48,7 +51,7 @@ const LoginForm = () => {
         description="This is the name that will be displayed on your profile and in
         emails."
       />
-      <FormSubmit>Submit action</FormSubmit>
+      <FormSubmit className={button}>Submit action</FormSubmit>
     </Form>
   );
 };

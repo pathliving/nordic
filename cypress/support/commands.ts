@@ -9,7 +9,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-// -- This is a parent command --
+/* // -- This is a parent command --
 Cypress.Commands.add('login', (email, password) => {
   //
 });
@@ -31,7 +31,7 @@ Cypress.Commands.add(
 // -- This will overwrite an existing command --
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   //
-});
+}); 
 
 declare global {
   namespace Cypress {
@@ -50,4 +50,4 @@ declare global {
     }
   }
 }
-export {};
+export {}; */

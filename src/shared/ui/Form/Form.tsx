@@ -12,6 +12,7 @@ import * as LabelPrimitive from '@radix-ui/react-label';
 import {
   ComponentPropsWithoutRef,
   ElementRef,
+  FormEventHandler,
   HTMLAttributes,
   Ref,
   forwardRef,
@@ -23,6 +24,7 @@ import {
   FieldPath,
   FieldValues,
   FormProvider,
+  UseFormHandleSubmit,
   UseFormReturn,
   useFormContext,
 } from 'react-hook-form';
@@ -30,8 +32,9 @@ import Button from '../Button/Button';
 
 interface IForm<T extends FieldValues>
   extends UseFormReturn<T>,
-    Omit<HTMLAttributes<HTMLFormElement>, 'reset'> {
+    Omit<HTMLAttributes<HTMLFormElement>, 'reset' | 'onSubmit'> {
   formRef?: Ref<HTMLFormElement>;
+  onSubmit: ReturnType<UseFormHandleSubmit<T>>;
 }
 
 const Form = <IFormValues extends FieldValues>({
@@ -45,7 +48,9 @@ const Form = <IFormValues extends FieldValues>({
     <FormProvider {...props}>
       <RootUI
         ref={formRef}
-        onSubmit={onSubmit}
+        onSubmit={(e) =>
+          onSubmit(e) as unknown as FormEventHandler<HTMLFormElement>
+        }
         className={className}
       >
         {children}

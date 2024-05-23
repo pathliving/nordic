@@ -5,7 +5,7 @@ import { getTodosErrorAction, getTodosSuccessAction } from './todos.slice';
 import { GET_ALL_TODOS, TTodo } from './todos.types';
 
 function* fetchTodosSaga(): SagaIterator<void> {
-  console.log({ env: process.env });
+  // console.log({ env: process.env });
 
   try {
     const response: AxiosResponse<TTodo[]> = yield call(() =>
@@ -17,7 +17,7 @@ function* fetchTodosSaga(): SagaIterator<void> {
     if (error instanceof Error) {
       yield put(getTodosErrorAction(error.message));
     } else {
-      console.log('Unexpected error', error);
+      // console.log('Unexpected error', error);
     }
   }
 }
