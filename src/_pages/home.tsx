@@ -9,18 +9,10 @@ import Link from '@/shared/ui/Link/Link';
 import List from '@/shared/ui/List/List';
 import Text from '@/shared/ui/Text/Text';
 import { useDispatch, useSelector } from 'react-redux';
-import { StateType } from '../../app/[lang]/reducers';
-import { getTodosAction } from '../../app/[lang]/todos.slice';
-import { dictionaryType } from '../../getDictionary';
+import { StateType } from '../../app/[locale]/reducers';
+import { getTodosAction } from '../../app/[locale]/todos.slice';
 
-export default function Home({
-  dictionary,
-}: {
-  // dictionary: ReturnType<typeof getDictionary>;
-  // dictionary: Promise<typeof getDictionary>;
-  // dictionary: typeof getDictionary;
-  dictionary: dictionaryType;
-}) {
+export default function Home() {
   const {
     todos: { data, isLoading },
   } = useSelector((state: StateType) => {
@@ -35,8 +27,7 @@ export default function Home({
   return (
     <div>
       <header>
-        <Heading as="h1">Home page</Heading>
-        <Text as="p">{dictionary.textWelcome.welcome}</Text>
+        <Heading as="h1">Landing page</Heading>
         <LocaleSwitcher />
         <ThemeSwitcher />
         <Text as="p">

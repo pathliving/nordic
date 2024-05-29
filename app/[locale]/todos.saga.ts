@@ -5,8 +5,6 @@ import { getTodosErrorAction, getTodosSuccessAction } from './todos.slice';
 import { GET_ALL_TODOS, TTodo } from './todos.types';
 
 function* fetchTodosSaga(): SagaIterator<void> {
-  // console.log({ env: process.env });
-
   try {
     const response: AxiosResponse<TTodo[]> = yield call(() =>
       // axios.get('https://jsonplaceholder.typicode.com/todos')

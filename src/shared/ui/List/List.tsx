@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { TTodo, TTodosReducer } from '../../../../app/[lang]/todos.types';
+import { TTodo, TTodosReducer } from '../../../../app/[locale]/todos.types';
 
 export default function List({ data }: TTodosReducer): ReactNode {
   return (

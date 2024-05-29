@@ -1,9 +1,0 @@
-{
-  "textWelcome": {
-    "welcome": "Привіт"
-  },
-  "counter": {
-    "increment": "Збільшити",
-    "decrement": "Зменшити"
-  }
-}

@@ -1,4 +1,3 @@
-// import todoReducer from './todos.slice';
 import { todoReducer } from './todos.slice';
 import { TTodosState } from './todos.types';
 

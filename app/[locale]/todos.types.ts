@@ -18,5 +18,5 @@ export type TTodosState = {
 export const TODOS = 'todos';
 export type TODOS = typeof TODOS;
 
-export const GET_ALL_TODOS = `${TODOS}/getTodosAction`; // TODO: vscode can't show exports - https://github.com/microsoft/TypeScript/issues/37816
+export const GET_ALL_TODOS = `${TODOS}/getTodosAction`;
 export type GET_ALL_TODOS = typeof GET_ALL_TODOS; // TODO: vscode can't show exports - https://github.com/microsoft/TypeScript/issues/37816

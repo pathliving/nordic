@@ -4,7 +4,7 @@ import { Form, FormField, FormSubmit } from '@/shared/ui/Form/Form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { button } from './LoginForm.css';
+import * as s from './LoginForm.css';
 
 const accountFormSchema = z.object({
   name: z
@@ -51,7 +51,7 @@ const LoginForm = () => {
         description="This is the name that will be displayed on your profile and in
         emails."
       />
-      <FormSubmit className={button}>Submit action</FormSubmit>
+      <FormSubmit className={s.button}>Submit action</FormSubmit>
     </Form>
   );
 };

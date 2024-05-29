@@ -1,66 +1,53 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-
-import { i18n } from './i18n-config';
-
 import { match as matchLocale } from '@formatjs/intl-localematcher';
+import { i18n } from '@locales/lib/config';
+import { LOCALE_DEFAULT } from '@locales/lib/constants';
+import { Locale } from '@locales/lib/types';
 import Negotiator from 'negotiator';
+import { createI18nMiddleware } from 'next-international/middleware';
+import { type NextRequest } from 'next/server';
 
-function getLocale(request: NextRequest): string | undefined {
+function getLocale(request: NextRequest): Locale {
+  const { locales } = i18n;
   // Negotiator expects plain object so we need to transform headers
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // @ts-expect-error locales are readonly
-  const locales: string[] = i18n.locales;
-
   // Use negotiator and intl-localematcher to get best locale
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+    // @ts-expect-error locales are readonly
     locales
   );
 
-  const defaultLang = locales[0];
-  const cookieLang = request.cookies.get('lang')?.value || defaultLang;
+  const cookieLang = (request.cookies.get('lang')?.value ||
+    LOCALE_DEFAULT) as Locale;
 
-  if (matchLocale([cookieLang], locales, i18n.defaultLocale)) {
+  if (matchLocale([cookieLang], locales, LOCALE_DEFAULT)) {
     return cookieLang;
   }
 
-  return matchLocale(languages, locales, i18n.defaultLocale);
+  return matchLocale(languages, locales, LOCALE_DEFAULT) as Locale;
 }
+
+const I18nMiddleware = createI18nMiddleware({
+  ...i18n,
+  urlMappingStrategy: 'rewriteDefault',
+  resolveLocaleFromRequest: (request) => {
+    return getLocale(request) ?? LOCALE_DEFAULT;
+  },
+});
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
-  // // If you have one
-  // if (
-  //   [
-  //     '/manifest.json',
-  //     '/favicon.ico',
-  //     // Your other files in `public`
-  //   ].includes(pathname)
-  // )
-  //   return
+  // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
+  // If you have one
+  const isFileInPublicDir = [
+    '/favicon.ico',
+    // Other files in `public`
+  ].includes(pathname);
+  if (isFileInPublicDir) return;
 
-  // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-        request.url
-      )
-    );
-  }
+  return I18nMiddleware(request);
 }
 
 export const config = {

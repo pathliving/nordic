@@ -1,15 +1,19 @@
+import Sidebar from '@/entities/Sidebar/Sidebar';
+import { getStaticParams, setStaticParams } from '@locales/lib/server';
+import type { Locale } from '@locales/lib/types';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
-import { i18n, type Locale } from '../../i18n-config';
+import LocaleProvider from './LocaleProvider';
 import StoreProvider from './StoreProvider';
+import './globalStyle.css';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Nordic App',
+  title: 'Nordic',
   description: 'Experimental project',
   // image: '/image.jpg',
   metadataBase: new URL('https://nordic.io'),
@@ -69,28 +73,34 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+  // return locales.map((locale) => ({ locale }));
+  return getStaticParams();
 }
 
 export default function RootLayout({
   children,
-  params: { lang },
+  params: { locale },
 }: {
   children: ReactNode;
-  params: { lang: Locale };
+  params: { locale: Locale };
 }) {
+  setStaticParams(locale);
+
   return (
     <html
-      lang={lang}
+      lang={locale}
       className="dark"
       style={{ colorScheme: 'dark' }}
     >
       <body className={inter.className}>
         <StoreProvider>
-          <Theme appearance="dark">
-            {children}
-            <ThemePanel />
-          </Theme>
+          <LocaleProvider locale={locale}>
+            <Theme appearance="dark">
+              <Sidebar />
+              {children}
+              <ThemePanel />
+            </Theme>
+          </LocaleProvider>
         </StoreProvider>
       </body>
     </html>
