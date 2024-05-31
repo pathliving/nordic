@@ -1,3 +1,5 @@
-import { i18n } from './config';
+import { locales } from './config';
 
-export type Locale = (typeof i18n.locales)[number];
+export type Locale = (typeof locales)[number];
+
+export type { AbstractIntlMessages } from 'next-intl';

@@ -1,22 +1,29 @@
 'use client';
 
-import { I18nProviderClient } from '@locales/lib/client';
-import { Locale } from '@locales/lib/types';
+import { NextIntlClientProvider } from '@locales/lib/client';
+import { AbstractIntlMessages, Locale } from '@locales/lib/types';
 import type { ReactNode } from 'react';
 
 export default function LocaleProvider({
+  messages,
   locale,
+  timeZone,
   children,
+  ...rest
 }: {
+  messages: AbstractIntlMessages;
   locale: Locale;
+  timeZone: string;
   children: ReactNode;
 }) {
   return (
-    <I18nProviderClient
+    <NextIntlClientProvider
+      messages={messages}
       locale={locale}
-      fallback={<p>Loading...</p>}
+      timeZone={timeZone}
+      {...rest}
     >
       {children}
-    </I18nProviderClient>
+    </NextIntlClientProvider>
   );
 }

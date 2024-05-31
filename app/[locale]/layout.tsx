@@ -1,5 +1,6 @@
 import Sidebar from '@/entities/Sidebar/Sidebar';
-import { getStaticParams, setStaticParams } from '@locales/lib/server';
+import { locales } from '@locales/lib/config';
+import { getMessages, getTimeZone, setStaticParams } from '@locales/lib/server';
 import type { Locale } from '@locales/lib/types';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import type { Metadata } from 'next';
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: 'Nordic',
   description: 'Experimental project',
   // image: '/image.jpg',
-  metadataBase: new URL('https://nordic.io'),
+  metadataBase: new URL(process.env.HOST_URL || 'https://nordic.io'),
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -73,11 +74,11 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  // return locales.map((locale) => ({ locale }));
-  return getStaticParams();
+  return locales.map((locale) => ({ locale }));
+  // return getStaticParams();
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { locale },
 }: {
@@ -85,6 +86,8 @@ export default function RootLayout({
   params: { locale: Locale };
 }) {
   setStaticParams(locale);
+  const messages = await getMessages();
+  const timeZone = await getTimeZone();
 
   return (
     <html
@@ -94,7 +97,11 @@ export default function RootLayout({
     >
       <body className={inter.className}>
         <StoreProvider>
-          <LocaleProvider locale={locale}>
+          <LocaleProvider
+            messages={messages}
+            locale={locale}
+            timeZone={timeZone}
+          >
             <Theme appearance="dark">
               <Sidebar />
               {children}

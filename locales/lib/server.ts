@@ -1,14 +1,16 @@
-import {
-  createI18nServer,
-  setStaticParamsLocale,
-} from 'next-international/server';
-import { config, dictionaries } from './config';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { Locale } from './types';
 
-const server = createI18nServer(dictionaries, config);
-
-export const { getI18n, getScopedI18n, getCurrentLocale, getStaticParams } =
-  server;
-
 export const setStaticParams = (locale: Locale) =>
-  setStaticParamsLocale(locale);
+  unstable_setRequestLocale(locale);
+
+export {
+  getFormatter,
+  getLocale,
+  getMessages,
+  getNow,
+  getRequestConfig,
+  getTimeZone,
+  getTranslations,
+  unstable_setRequestLocale,
+} from 'next-intl/server';

@@ -1,23 +1,14 @@
-import { getCurrentLocale } from '@locales/lib/server';
-import Link from 'next/link';
+// import { getCurrentLocale } from '@locales/lib/server';
+import Navigation from '@/features/Navigation/Navigation';
+import { getLocale } from '@locales/lib/server';
 
-export default function Sidebar() {
-  const locale = getCurrentLocale();
+export default async function Sidebar() {
+  const locale = await getLocale();
 
   return (
-    <nav>
-      <ul>
-        <li>current locale: {locale}</li>
-        <li>
-          <Link href="/">home</Link>
-        </li>
-        <li>
-          <Link href="/login">login</Link>
-        </li>
-        <li>
-          <Link href="/404">404</Link>
-        </li>
-      </ul>
-    </nav>
+    <aside>
+      <div>current locale: {locale}</div>
+      <Navigation />
+    </aside>
   );
 }

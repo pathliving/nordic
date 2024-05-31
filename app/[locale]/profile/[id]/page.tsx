@@ -1,14 +1,20 @@
 import Text from '@/shared/ui/Text/Text';
-import { getI18n } from '@locales/lib/server';
+import { getTranslations, setStaticParams } from '@locales/lib/server';
+import { Locale } from '@locales/lib/types';
 import { Box, Container } from '@radix-ui/themes';
 
-export default async function Page() {
-  const t = await getI18n();
+export default async function Page({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  setStaticParams(locale);
+  const t = await getTranslations();
 
   return (
     <Box>
       <Container>
-        <Text>{t('page.profile')}</Text>
+        <Text>{t('Page.profile')}</Text>
       </Container>
     </Box>
   );

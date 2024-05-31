@@ -1,0 +1,23 @@
+{
+  "Page": {
+    "notFound": "404 page",
+    "dashboard": "dashboard page",
+    "forgot": "forgot password page",
+    "login": "login page",
+    "profile": "profile page",
+    "profileSettings": "profile settings page",
+    "registration": "registration page"
+  },
+  "Content": {
+    "description": "Lorem Ipsum is text of the printing and typesetting industry"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, uk {🇺🇦 Ukraine} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Navigation": {
+    "home": "home",
+    "login": "login",
+    "404": "404"
+  }
+}

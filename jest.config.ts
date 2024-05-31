@@ -17,6 +17,8 @@ const customJestConfig: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '@/(.*)$': '<rootDir>/src/$1',
+    '^next$': require.resolve('next'),
+    '^next/navigation$': require.resolve('next/navigation'),
   },
 };
 

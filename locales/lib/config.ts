@@ -1,23 +1,39 @@
-import { LOCALE_EN, LOCALE_FROM_SEGMENT_DIR, LOCALE_UK } from './constants';
+import { Pathnames } from 'next-intl/navigation';
+import { LOCALE_EN, LOCALE_UK } from './constants';
 
-const enFile = {
-  [LOCALE_EN]: () => import('../en'),
-};
-const ukFile = {
-  [LOCALE_UK]: () => import('../uk'),
-};
+export const locales = [LOCALE_EN, LOCALE_UK] as const;
+export const defaultLocale = LOCALE_EN;
 
-export const config = {
-  segmentName: LOCALE_FROM_SEGMENT_DIR,
-  fallbackLocale: enFile,
-};
+export const pathnames = {
+  '/': '/',
+  '/404': {
+    en: '/404',
+    uk: '/404',
+  },
+  '/dashboard': {
+    en: '/dashboard',
+    uk: '/dashboard',
+  },
+  '/forgot': {
+    en: '/forgot',
+    uk: '/forgot',
+  },
+  '/profile': {
+    en: '/profile',
+    uk: '/profile',
+  },
+  '/profile/settings': {
+    en: '/profile/settings',
+    uk: '/profile/settings',
+  },
+  '/registration': {
+    en: '/registration',
+    uk: '/registration',
+  },
+  '/login': {
+    en: '/login',
+    uk: '/login',
+  },
+} satisfies Pathnames<typeof locales>;
 
-export const dictionaries = {
-  ...enFile,
-  ...ukFile,
-};
-
-export const i18n = {
-  locales: [LOCALE_EN, LOCALE_UK],
-  defaultLocale: LOCALE_EN,
-} as const;
+export type AppPathnames = keyof typeof pathnames;

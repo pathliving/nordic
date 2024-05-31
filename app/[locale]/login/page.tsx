@@ -1,17 +1,27 @@
-import LoginForm from '@/features/LoginForm/LoginForm';
 import Text from '@/shared/ui/Text/Text';
-import { getI18n } from '@locales/lib/server';
+import { getTranslations, setStaticParams } from '@locales/lib/server';
+import { Locale } from '@locales/lib/types';
 import { Box, Container, Flex } from '@radix-ui/themes';
+import dynamic from 'next/dynamic';
 
-export default async function Page() {
-  const t = await getI18n();
+const LazyLoginForm = dynamic(() => import('@/features/LoginForm/LoginForm'), {
+  loading: () => <p>Loading...</p>,
+});
+
+export default async function Page({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  setStaticParams(locale);
+  const t = await getTranslations('Page');
 
   return (
     <Box>
       <Container>
-        <Text>{t('page.login')}</Text>
+        <Text>{t('login')}</Text>
         <Flex>
-          <LoginForm />
+          <LazyLoginForm />
         </Flex>
       </Container>
     </Box>

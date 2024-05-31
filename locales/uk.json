@@ -1,0 +1,23 @@
+{
+  "Page": {
+    "notFound": "404 сторінка",
+    "dashboard": "dashboard сторінка",
+    "forgot": "forgot password сторінка",
+    "login": "login сторінка",
+    "profile": "profile сторінка",
+    "profileSettings": "profile settings сторінка",
+    "registration": "registration сторінка"
+  },
+  "Content": {
+    "description": "Lorem Ipsum is text of the printing and typesetting industry"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, uk {🇺🇦 Ukraine} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Navigation": {
+    "home": "головна",
+    "login": "логін",
+    "404": "404"
+  }
+}

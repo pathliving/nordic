@@ -1,29 +1,11 @@
-'use client';
-
 import LocaleSwitcher from '@/features/LocaleSwitcher/LocaleSwitcher';
 import ThemeSwitcher from '@/features/ThemeSwitcher/ThemeSwitcher';
-import Button from '@/shared/ui/Button/Button';
 import Heading from '@/shared/ui/Heading/Heading';
 import Input from '@/shared/ui/Input/Input';
 import Link from '@/shared/ui/Link/Link';
-import List from '@/shared/ui/List/List';
 import Text from '@/shared/ui/Text/Text';
-import { useDispatch, useSelector } from 'react-redux';
-import { StateType } from '../../app/[locale]/reducers';
-import { getTodosAction } from '../../app/[locale]/todos.slice';
 
 export default function Home() {
-  const {
-    todos: { data, isLoading },
-  } = useSelector((state: StateType) => {
-    return state.todos;
-  });
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(getTodosAction());
-  };
-
   return (
     <div>
       <header>
@@ -56,15 +38,10 @@ export default function Home() {
           // size="2"
           placeholder="Reply to"
         />
-        <Button onClick={handleClick}>Click me!</Button>
         <div>
           <Link href="/todo">Go to Todo page</Link>
         </div>
       </header>
-
-      <section>
-        {isLoading ? <span>Loading...</span> : <List data={data} />}
-      </section>
     </div>
   );
 }
