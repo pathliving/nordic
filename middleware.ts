@@ -1,36 +1,17 @@
-// import { match as matchLocale } from '@formatjs/intl-localematcher';
-import { defaultLocale, locales } from '@locales/lib/config';
-// import { LOCALE_DEFAULT } from '@locales/lib/constants';
-// import { Locale } from '@locales/lib/types';
-// import Negotiator from 'negotiator';
+import { defaultLocale, locales, pathnames } from '@locales/lib/config';
+import {
+  COOKIE_LOCALE,
+  LOCALE_DEFAULT,
+  LOCALE_DEFAULT_LENGTH,
+  LOCALE_PREFIX,
+  LOCALE_WITHOUT_DEFAULT_PREFIX,
+} from '@locales/lib/constants';
+import { Locale } from '@locales/lib/types';
 import createMiddleware from 'next-intl/middleware';
-// import { NextResponse, type NextRequest } from 'next/server';
-import { type NextRequest } from 'next/server';
-
-/* function getLocale(request: NextRequest): Locale {
-  const { locales } = i18n;
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // Use negotiator and intl-localematcher to get best locale
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-    // @ts-expect-error locales are readonly
-    locales
-  );
-
-  const cookieLang = (request.cookies.get('lang')?.value ||
-    LOCALE_DEFAULT) as Locale;
-
-  if (matchLocale([cookieLang], locales, LOCALE_DEFAULT)) {
-    return cookieLang;
-  }
-
-  return matchLocale(languages, locales, LOCALE_DEFAULT) as Locale;
-} */
+import { NextResponse, type NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
   /*
    * `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
@@ -39,36 +20,37 @@ export function middleware(request: NextRequest) {
   const isFileInPublicDir = [
     '/favicon.ico',
     // Other files in `public`
-  ].includes(request.nextUrl.pathname);
+  ].includes(pathname);
   if (isFileInPublicDir) return;
 
+  const [, locale, ...segments] = pathname.split('/');
+  const urlLocale =
+    locale.length === LOCALE_DEFAULT_LENGTH ? locale : LOCALE_DEFAULT;
+  const isUrlLocaleNotExist = !locales.includes(urlLocale as Locale);
+
+  if (isUrlLocaleNotExist) {
+    const cookieLocale =
+      request.cookies.get(COOKIE_LOCALE)?.value ?? LOCALE_DEFAULT;
+    const cookieLocaleExceptDefault =
+      LOCALE_PREFIX === LOCALE_WITHOUT_DEFAULT_PREFIX &&
+      cookieLocale !== LOCALE_DEFAULT
+        ? cookieLocale
+        : '';
+    const newPathname = segments
+      .toSpliced(0, 0, cookieLocaleExceptDefault)
+      .join('/');
+
+    return NextResponse.redirect(new URL(newPathname, request.nextUrl.origin));
+  }
+
   const handleI18nRouting = createMiddleware({
-    // ...i18n,
+    pathnames,
     locales,
     defaultLocale,
-    localePrefix: 'as-needed',
+    localePrefix: LOCALE_PREFIX,
   });
 
   return handleI18nRouting(request);
-
-  /* // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-        request.url
-      )
-    );
-  } */
 }
 
 export const config = {
