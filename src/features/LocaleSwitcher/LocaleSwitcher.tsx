@@ -1,5 +1,6 @@
-import { locales } from '@locales/lib/config';
-import { getLocale, getTranslations } from '@locales/lib/server';
+import { locales } from '@/shared/i18n/config';
+import { getLocale } from '@/shared/i18n/server/getLocale';
+import { getTranslations } from '@/shared/i18n/server/getTranslations';
 import LocaleSwitcherSelect from './LocaleSwitcherSelect';
 
 export default async function LocaleSwitcher() {

@@ -1,7 +1,7 @@
-import en from './locales/en.json';
+import en from '@/shared/i18n/locales/en.json';
 
 type Locales = typeof en;
 
 declare global {
-  interface IntlMessages extends Locales {}
+  type IntlMessages = Locales;
 }

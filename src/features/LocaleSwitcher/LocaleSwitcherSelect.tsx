@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from '@locales/lib/navigation';
+import { usePathname, useRouter } from '@/shared/i18n/navigation';
 import { useParams } from 'next/navigation';
 import { ChangeEvent, ReactNode, useTransition } from 'react';
 

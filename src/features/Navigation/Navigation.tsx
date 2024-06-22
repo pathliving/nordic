@@ -1,4 +1,4 @@
-import { useTranslations } from '@locales/lib/client';
+import { useTranslations } from '@/shared/i18n/client/useTranslations';
 import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 import NavigationLink from './NavigationLink';
 

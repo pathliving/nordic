@@ -1,6 +1,5 @@
-// import { getCurrentLocale } from '@locales/lib/server';
 import Navigation from '@/features/Navigation/Navigation';
-import { getLocale } from '@locales/lib/server';
+import { getLocale } from '@/shared/i18n/server/getLocale';
 
 export default async function Sidebar() {
   const locale = await getLocale();
