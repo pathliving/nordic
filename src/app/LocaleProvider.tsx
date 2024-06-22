@@ -1,7 +1,7 @@
 'use client';
 
-import { NextIntlClientProvider } from '@locales/lib/client';
-import { AbstractIntlMessages, Locale } from '@locales/lib/types';
+import { NextIntlClientProvider } from '@/shared/i18n/client/NextIntlClientProvider';
+import { AbstractIntlMessages, Locale } from '@/shared/i18n/types';
 import type { ReactNode } from 'react';
 
 export default function LocaleProvider({

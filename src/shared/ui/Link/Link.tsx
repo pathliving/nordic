@@ -12,7 +12,7 @@ export default function LinkUI({
   children: ReactNode;
 }) {
   const pathname = usePathname();
-  const lang = pathname.split('/')[1];
+  const lang = pathname?.split('/')[1];
 
   return <Link href={`/${lang}${href}`}>{children}</Link>;
 }

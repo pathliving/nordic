@@ -1,5 +1,5 @@
-import LocaleSwitcher from '@/features/LocaleSwitcher/LocaleSwitcher';
-import ThemeSwitcher from '@/features/ThemeSwitcher/ThemeSwitcher';
+// import LocaleSwitcher from '@/features/LocaleSwitcher/LocaleSwitcher';
+// import ThemeSwitcher from '@/features/ThemeSwitcher/ThemeSwitcher';
 import Heading from '@/shared/ui/Heading/Heading';
 import Input from '@/shared/ui/Input/Input';
 import Link from '@/shared/ui/Link/Link';
@@ -10,8 +10,8 @@ export default function Home() {
     <div>
       <header>
         <Heading as="h1">Landing page</Heading>
-        <LocaleSwitcher />
-        <ThemeSwitcher />
+        {/* <LocaleSwitcher />
+        <ThemeSwitcher /> */}
         <Text as="p">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, impedit
           soluta consectetur quia molestiae minima facilis beatae illo saepe

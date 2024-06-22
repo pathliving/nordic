@@ -1,5 +1,7 @@
-import { defaultLocale, locales, pathnames } from '@locales/lib/config';
-import { getPathname } from '@locales/lib/navigation';
+import { app } from '@/shared/config/app';
+import { PAGE_HOME } from '@/shared/constants/url';
+import { defaultLocale, locales, pathnames } from '@/shared/i18n/config';
+import { getPathname } from '@/shared/i18n/navigation';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     locale: (typeof locales)[number]
   ) {
     const pathname = getPathname({ locale, href: key });
-    return `${process.env.HOST_URL}/${locale}${pathname === '/' ? '' : pathname}`;
+    return `${app.url.href}${locale}${pathname === PAGE_HOME ? '' : pathname}`;
   }
 
   return keys.map((key) => ({

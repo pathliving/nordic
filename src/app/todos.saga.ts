@@ -1,3 +1,4 @@
+import { app } from '@/shared/config/app';
 import axios, { AxiosResponse } from 'axios';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -8,7 +9,7 @@ function* fetchTodosSaga(): SagaIterator<void> {
   try {
     const response: AxiosResponse<TTodo[]> = yield call(() =>
       // axios.get('https://jsonplaceholder.typicode.com/todos')
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/todos`)
+      axios.get(`${app.api}/todos`)
     );
     yield put(getTodosSuccessAction(response.data));
   } catch (error) {

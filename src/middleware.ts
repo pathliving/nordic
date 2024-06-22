@@ -1,16 +1,19 @@
-import { defaultLocale, locales, pathnames } from '@locales/lib/config';
+import { app } from '@/shared/config/app';
+import {
+  defaultLocale,
+  localePrefix,
+  locales,
+  pathnames,
+} from '@/shared/i18n/config';
 import {
   COOKIE_LOCALE,
-  LOCALE_DEFAULT,
-  LOCALE_DEFAULT_LENGTH,
-  LOCALE_PREFIX,
   LOCALE_WITHOUT_DEFAULT_PREFIX,
-} from '@locales/lib/constants';
-import { Locale } from '@locales/lib/types';
+} from '@/shared/i18n/constants/locales';
+import { Locale } from '@/shared/i18n/types';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export default function middlewareI18n(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   /*
@@ -19,21 +22,31 @@ export function middleware(request: NextRequest) {
    */
   const isFileInPublicDir = [
     '/favicon.ico',
+    '/icons/16x16.png',
+    '/icons/32x32.png',
+    '/icons/144x144.png',
+    '/icons/192x192.png',
+    '/icons/512x512.png',
+    '/icons/apple-touch-icon.png',
+    '/images/social-media-cover.jpg',
+    '/images/pwa-screenshot-wide-1280x720.jpg',
+    'images/pwa-screenshot-narrow-720x1280.jpg',
+    app.socialImagePath,
     // Other files in `public`
   ].includes(pathname);
   if (isFileInPublicDir) return;
 
   const [, locale, ...segments] = pathname.split('/');
   const urlLocale =
-    locale.length === LOCALE_DEFAULT_LENGTH ? locale : LOCALE_DEFAULT;
+    locale.length === defaultLocale.length ? locale : defaultLocale;
   const isUrlLocaleNotExist = !locales.includes(urlLocale as Locale);
 
   if (isUrlLocaleNotExist) {
     const cookieLocale =
-      request.cookies.get(COOKIE_LOCALE)?.value ?? LOCALE_DEFAULT;
+      request.cookies.get(COOKIE_LOCALE)?.value ?? defaultLocale;
     const cookieLocaleExceptDefault =
-      LOCALE_PREFIX === LOCALE_WITHOUT_DEFAULT_PREFIX &&
-      cookieLocale !== LOCALE_DEFAULT
+      localePrefix === LOCALE_WITHOUT_DEFAULT_PREFIX &&
+      cookieLocale !== defaultLocale
         ? cookieLocale
         : '';
     const newPathname = segments
@@ -47,7 +60,7 @@ export function middleware(request: NextRequest) {
     pathnames,
     locales,
     defaultLocale,
-    localePrefix: LOCALE_PREFIX,
+    localePrefix,
   });
 
   return handleI18nRouting(request);
@@ -74,6 +87,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|manifest.[json,webmanifest]|.*\\.[png, jpg]).*)',
   ],
 };

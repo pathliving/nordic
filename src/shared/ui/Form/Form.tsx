@@ -149,7 +149,7 @@ const FormField = <
   const { getFieldState, formState } = useFormContext();
 
   const { error } = getFieldState(name, formState);
-  const errorMessage = error?.message;
+  const errorMessage = error?.message as string;
 
   return (
     <Controller

@@ -1,6 +1,6 @@
-import Todo from '@/_pages/todo';
-import { setStaticParams } from '@locales/lib/server';
-import { Locale } from '@locales/lib/types';
+import Todo from '@/pages/todo';
+import { setStaticParams } from '@/shared/i18n/server/setStaticParams';
+import { Locale } from '@/shared/i18n/types';
 
 export default function Page({
   params: { locale },
