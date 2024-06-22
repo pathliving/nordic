@@ -1,4 +1,5 @@
 import { app } from '@/shared/config/app';
+import { manifestIcons } from '@/shared/config/icons';
 import { PAGE_HOME } from '@/shared/constants/url';
 import { defaultLocale } from '@/shared/i18n/config';
 import { MetadataRoute } from 'next';
@@ -21,7 +22,7 @@ export default function manifest(): MetadataRoute.Manifest & {
     background_color: app.theme?.color,
     theme_color: app.theme?.color,
     lang: defaultLocale,
-    icons: app.icons?.manifest,
+    icons: manifestIcons,
     screenshots: [
       {
         src: app.pwaImagePath.wide,

@@ -1,12 +1,6 @@
 import { env } from '@/shared/config/env';
-import {
-  appleIcon,
-  favicon,
-  manifestIcons,
-  metadataIcons,
-} from '@/shared/config/icons';
 import { PAGE_HOME } from '@/shared/constants/url';
-import type { Metadata, MetadataRoute } from 'next';
+import type { Metadata } from 'next';
 
 type AppConfig = Omit<Metadata, 'icons'> & {
   title: string;
@@ -15,14 +9,41 @@ type AppConfig = Omit<Metadata, 'icons'> & {
   url: URL;
   rootUrl: URL | string;
   icons: {
-    metadata: Array<{
-      url: string | URL;
+    tiny: {
+      url: string;
       type?: string;
       sizes?: string;
-    }>;
-    manifest: MetadataRoute.Manifest['icons'];
-    favicon: string | URL;
-    appleIcon: string | URL;
+    };
+    small: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    medium: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    large: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    huge: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    favicon: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    apple: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
   };
   api?: string;
   socialImagePath: string;
@@ -57,10 +78,41 @@ export const app: AppConfig = {
     color: '#fff',
   },
   icons: {
-    metadata: metadataIcons,
-    manifest: manifestIcons,
-    favicon,
-    appleIcon,
+    favicon: {
+      url: '/favicon.ico',
+      type: 'image/x-icon',
+      sizes: 'any',
+    },
+    apple: {
+      url: '/icons/apple-touch-icon.png',
+      type: 'image/png',
+      sizes: '180x180',
+    },
+    tiny: {
+      url: '/icons/16x16.png',
+      type: 'image/png',
+      sizes: '16x16',
+    },
+    small: {
+      url: '/icons/32x32.png',
+      type: 'image/png',
+      sizes: '32x32',
+    },
+    medium: {
+      url: '/icons/144x144.png',
+      type: 'image/png',
+      sizes: '144x144',
+    },
+    large: {
+      url: '/icons/192x192.png',
+      type: 'image/png',
+      sizes: '192x192',
+    },
+    huge: {
+      url: '/icons/512x512.png',
+      type: 'image/png',
+      sizes: '512x512',
+    },
   },
   manifest: '/manifest.webmanifest',
   keywords: ['application', 'dashboard', 'nextjs'],

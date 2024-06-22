@@ -1,38 +1,69 @@
-const icons = [
+import { app } from '@/shared/config/app';
+
+const icons = app.icons;
+
+export const metadataIcons = [
   {
-    url: '/icons/16x16.png',
-    type: 'image/png',
-    sizes: '16x16',
+    url: icons.tiny.url,
+    type: icons.tiny.type,
+    sizes: icons.tiny.sizes,
   },
   {
-    url: '/icons/32x32.png',
-    type: 'image/png',
-    sizes: '32x32',
+    url: icons.small.url,
+    type: icons.small.type,
+    sizes: icons.small.sizes,
   },
   {
-    url: '/icons/144x144.png',
-    type: 'image/png',
-    sizes: '144x144',
+    url: icons.medium.url,
+    type: icons.medium.type,
+    sizes: icons.medium.sizes,
   },
   {
-    url: '/icons/192x192.png',
-    type: 'image/png',
-    sizes: '192x192',
+    url: icons.large.url,
+    type: icons.large.type,
+    sizes: icons.large.sizes,
   },
   {
-    url: '/icons/512x512.png',
-    type: 'image/png',
-    sizes: '512x512',
+    url: icons.huge.url,
+    type: icons.huge.type,
+    sizes: icons.huge.sizes,
   },
 ];
 
-export const favicon = '/favicon.ico';
-export const appleIcon = 'icons/apple-touch-icon.png';
-export const metadataIcons = icons;
-export const manifestIcons = icons.reduce(
-  (acc, cur) => [...acc, { src: cur.url, type: cur.type, sizes: cur.sizes }],
-  [
-    { src: favicon, type: 'image/x-icon', sizes: 'any' },
-    { src: appleIcon, type: 'image/png', sizes: '180x180' },
-  ]
-);
+export const manifestIcons = [
+  {
+    src: icons.tiny.url,
+    type: icons.tiny.type,
+    sizes: icons.tiny.sizes,
+  },
+  {
+    src: icons.small.url,
+    type: icons.small.type,
+    sizes: icons.small.sizes,
+  },
+  {
+    src: icons.medium.url,
+    type: icons.medium.type,
+    sizes: icons.medium.sizes,
+  },
+  {
+    src: icons.large.url,
+    type: icons.large.type,
+    sizes: icons.large.sizes,
+  },
+  {
+    src: icons.huge.url,
+    type: icons.huge.type,
+    sizes: icons.huge.sizes,
+  },
+  {
+    src: icons.favicon.url,
+    type: icons.favicon.type,
+    sizes: icons.favicon.sizes,
+  },
+  {
+    src: icons.apple.url,
+    type: icons.apple.type,
+    sizes: icons.apple.sizes,
+  },
+];

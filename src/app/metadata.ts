@@ -1,4 +1,5 @@
 import { app } from '@/shared/config/app';
+import { metadataIcons } from '@/shared/config/icons';
 import { social } from '@/shared/config/social';
 import { PAGE_HOME, PAGE_HOME_WITH_LOCALE } from '@/shared/constants/url';
 import { defaultLocale } from '@/shared/i18n/config';
@@ -22,8 +23,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: app.icons?.favicon,
-    apple: app.icons?.appleIcon,
-    other: app.icons?.metadata,
+    apple: app.icons?.apple,
+    other: metadataIcons,
   },
   manifest: app.manifest,
   appleWebApp: {
