@@ -14,7 +14,8 @@ const accountFormSchema = z.object({
     })
     .max(30, {
       message: 'Name must not be longer than 30 characters.',
-    }),
+    })
+    .email('This is not a valid email.'),
 });
 
 type AccountFormValues = z.infer<typeof accountFormSchema>;
