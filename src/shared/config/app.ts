@@ -2,63 +2,6 @@ import { env } from '@/shared/config/env';
 import { PAGE_HOME } from '@/shared/constants/url';
 import type { Metadata } from 'next';
 
-type AppConfig = Omit<Metadata, 'icons'> & {
-  title: string;
-  description: string;
-  applicationName: string;
-  url: URL;
-  rootUrl: URL | string;
-  icons: {
-    tiny: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    small: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    medium: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    large: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    huge: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    favicon: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-    apple: {
-      url: string;
-      type?: string;
-      sizes?: string;
-    };
-  };
-  api?: string;
-  socialImagePath: string;
-  pwaImagePath: {
-    wide: string;
-    narrow: string;
-  };
-  theme: {
-    default: string;
-    dark: 'dark';
-    light: 'light';
-    color: string;
-  };
-};
-
 export const app: AppConfig = {
   title: 'Nordic',
   description: 'Experimental project',
@@ -118,4 +61,61 @@ export const app: AppConfig = {
   keywords: ['application', 'dashboard', 'nextjs'],
   referrer: 'origin',
   robots: 'index, follow',
+};
+
+type AppConfig = Omit<Metadata, 'icons'> & {
+  title: string;
+  description: string;
+  applicationName: string;
+  url: URL;
+  rootUrl: URL | string;
+  icons: {
+    tiny: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    small: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    medium: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    large: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    huge: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    favicon: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+    apple: {
+      url: string;
+      type?: string;
+      sizes?: string;
+    };
+  };
+  api?: string;
+  socialImagePath: string;
+  pwaImagePath: {
+    wide: string;
+    narrow: string;
+  };
+  theme: {
+    default: string;
+    dark: 'dark';
+    light: 'light';
+    color: string;
+  };
 };
