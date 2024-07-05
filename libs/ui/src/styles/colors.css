@@ -1,0 +1,94 @@
+:root {
+  /* primitive colors */
+  --white: #ffffff;
+  --black: #000000;
+  
+  --violet-400: #2a0354;
+  --violet-300: #5603AD;
+  --violet-200: #8367C7;
+  --violet-100: #a989fa;
+
+  --purple-400: #ff4785;
+  --purple-300: #ff6c9D;
+  --purple-200: #ff91B6;
+  --purple-100: #ffc7da;
+
+  --blue-400: #65A3F0;
+  --blue-300: #82B5F2;
+  --blue-200: #A2C9F5;
+  --blue-100: #A2C9F5;
+
+  --turquoise-400: #85D0D1;
+  --turquoise-300: #9BD8DA;
+  --turquoise-200: #B3E1E3;
+  --turquoise-100: #D9F0F1;
+
+  --green-400: #8ABB5F;
+  --green-300: #A2C97F;
+  --green-200: #B9D6A1;
+  --green-100: #DCEAD0;
+
+  --ochre-400: #E9B455;
+  --ochre-300: #EDC370;
+  --ochre-200: #F2D192;
+  --ochre-100: #F8E9CA;
+
+  --red-400: #DB5F38;
+  --red-300: #DF7D5D;
+  --red-200: #E59E87;
+  --red-100: #F0CFC5;
+
+  --grey-100: #f6f5f5;
+  --grey-200: #ebebeb;
+  --grey-300: #bbbbbb;
+  --grey-400: #1a212b;
+
+  /* core tokens */
+  --whisper: var(--violet-100);
+  --charm: var(--violet-200);
+  --amethyst: var(--violet-300);
+  --indigo: var(--violet-400);
+
+  --pink: var(--purple-100);
+  --petal: var(--purple-200);
+  --fuchsia: var(--purple-300);
+  --cherry: var(--purple-400);
+
+  --sky: var(--blue-100);
+  --mirage: var(--blue-200);
+  --glow: var(--blue-300);
+  --ocean: var(--blue-400);
+
+  --water: var(--turquoise-100);
+  --splash: var(--turquoise-200);
+  --mist: var(--turquoise-300);
+  --crystal: var(--turquoise-400);
+  
+  --canopy: var(--green-100);
+  --grass: var(--green-200);
+  --meadow: var(--green-300);
+  --sage: var(--green-400);
+
+  --goldenrod: var(--ochre-100);
+  --sunflower: var(--ochre-200);
+  --wheat: var(--ochre-300);
+  --goldbrown: var(--ochre-400);
+
+  --maple: var(--red-100);
+  --terracotta: var(--red-200);
+  --coral: var(--red-300);
+  --peach: var(--red-400);
+
+  --pearl: var(--grey-100);
+  --silver: var(--grey-200);
+  --platinum: var(--grey-300);
+  --asphalt: var(--grey-400);
+
+  /* semantic tokens */
+  --primary: var(--asphalt);
+  --secondary: var(--pearl);
+  --accent: var(--platinum);
+  --success: var(--sage);
+  --warning: var(--sunflower);
+  --error: var(--peach);
+}

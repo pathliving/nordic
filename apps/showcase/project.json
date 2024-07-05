@@ -1,0 +1,9 @@
+{
+  "name": "showcase",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/showcase",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project showcase --web",
+  "targets": {}
+}

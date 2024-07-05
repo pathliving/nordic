@@ -1,0 +1,13 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "This library was generated with [Nx](https://nx.dev).",
+  "main": "index.js",
+  "scripts": {},
+  "type": "module",
+  "keywords": [],
+  "dependencies": {
+    "@swc/helpers": "~0.5.11"
+  },
+  "devDependencies": {}
+}
