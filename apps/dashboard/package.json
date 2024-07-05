@@ -1,0 +1,14 @@
+{
+  "name": "@nordic/dashboard",
+  "version": "1.0.0",
+  "description": "This app was generated with [Nx](https://nx.dev).",
+  "main": "index.js",
+  "scripts": {
+    "init": "cp .env.example .env && cp .env.production.example .env.production && cp .env.development.example .env.development && cp .env.local.example .env.local",
+    "dev:server": "node ./json-server/index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,6 +1,9 @@
-build
-coverage
-docs
-static
-node_modules
-design-template
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/build
+/docs
+/static
+/node_modules
+/.nx/cache
+/.nx/workspace-data

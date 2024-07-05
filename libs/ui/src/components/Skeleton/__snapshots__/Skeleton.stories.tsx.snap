@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Skeleton ArticleSkeleton smoke-test 1`] = `
+<div style="display: flex; flex-direction: column; gap: var(--s16); border-color: var(--secondary); height: 140px; width: 400px;">
+  <div style="display: flex; gap: var(--s16);">
+    <div style="flex: 0 0 auto;">
+      <span class="_skeleton_15e9e_1 _circle_15e9e_27">
+      </span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: var(--s16); width: 100%;">
+      <span class="_skeleton_15e9e_1 _text_15e9e_33">
+      </span>
+      <span class="_skeleton_15e9e_1 _text_15e9e_33">
+      </span>
+    </div>
+  </div>
+  <span class="_skeleton_15e9e_1 _text_15e9e_33">
+  </span>
+  <span class="_skeleton_15e9e_1 _text_15e9e_33">
+  </span>
+</div>
+`;
+
+exports[`Components/Skeleton Container smoke-test 1`] = `
+<figure style="width: 450px; height: 200px;">
+  <span class="_skeleton_15e9e_1 _container_15e9e_21 skeleton-container">
+  </span>
+  <figcaption>
+    assets/not-found-image.svg
+  </figcaption>
+</figure>
+`;

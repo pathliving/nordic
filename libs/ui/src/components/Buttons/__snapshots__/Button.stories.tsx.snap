@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Button Large smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _l_cvwg2_45 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Button
+  </span>
+</button>
+`;
+
+exports[`Components/Button LeftIcon smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _m_cvwg2_35 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    <span aria-hidden="true">
+      ⚡️
+    </span>
+    Activate
+  </span>
+</button>
+`;
+
+exports[`Components/Button Medium smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _m_cvwg2_35 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Button
+  </span>
+</button>
+`;
+
+exports[`Components/Button Primary smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _m_cvwg2_35 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Button
+  </span>
+</button>
+`;
+
+exports[`Components/Button PrimaryLoading smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _m_cvwg2_35"
+        type="button"
+        disabled
+        aria-disabled="true"
+>
+  <span class="_content_cvwg2_17">
+    <span>
+      wait ...
+    </span>
+  </span>
+</button>
+`;
+
+exports[`Components/Button RightIcon smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _m_cvwg2_35 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Deactivate
+    <span aria-hidden="true">
+      ⚡️
+    </span>
+  </span>
+</button>
+`;
+
+exports[`Components/Button Secondary smoke-test 1`] = `
+<button class="_button_cvwg2_1 _secondary_cvwg2_70 _m_cvwg2_35 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Button
+  </span>
+</button>
+`;
+
+exports[`Components/Button Small smoke-test 1`] = `
+<button class="_button_cvwg2_1 _primary_cvwg2_55 _s_cvwg2_25 btn-primary"
+        type="button"
+>
+  <span class="_content_cvwg2_17">
+    Button
+  </span>
+</button>
+`;

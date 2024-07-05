@@ -1,0 +1,18 @@
+:root {
+  /* semantic tokens */
+  --spacing-pixel: 1px;
+  --spacing-base: 4px;
+  --s1: var(--spacing-pixel);
+  --s4: var(--spacing-base);
+  --s8: calc(2 * var(--spacing-base));
+  --s12: calc(3 * var(--spacing-base));
+  --s16: calc(4 * var(--spacing-base));
+  --s20: calc(5 * var(--spacing-base));
+  --s24: calc(6 * var(--spacing-base));
+  --s28: calc(7 * var(--spacing-base));
+  --s32: calc(8 * var(--spacing-base));
+  --s36: calc(9 * var(--spacing-base));
+  --s40: calc(10 * var(--spacing-base));
+  --s44: calc(11 * var(--spacing-base));
+  --s48: calc(12 * var(--spacing-base));
+}
