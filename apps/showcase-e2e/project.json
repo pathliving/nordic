@@ -4,6 +4,7 @@
   "sourceRoot": "apps/showcase-e2e/src",
   "tags": [],
   "implicitDependencies": ["showcase"],
-  "// targets": "to see all targets run: nx show project showcase-e2e --web",
-  "targets": {}
+  "targets": {
+    "test": {}
+  }
 }

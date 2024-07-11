@@ -1,4 +1,4 @@
-// import alias from '@rollup/plugin-alias';
+/* // import alias from '@rollup/plugin-alias';
 import react from '@vitejs/plugin-react';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
@@ -58,6 +58,35 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
       // '@': resolve(dirname(fileURLToPath(import.meta.url)), './src'),
       // '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+});
+ */
+
+import react from '@vitejs/plugin-react';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { defineConfig } from 'vitest/config';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./vitest.setup.ts'],
+    reporters: ['default'],
+    coverage: {
+      reporter: ['text', 'lcov'],
+      include: ['src/**/*.{ts,tsx,js,jsx}'],
+      exclude: ['node_modules', 'dist'],
+    },
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
     },
   },
 });

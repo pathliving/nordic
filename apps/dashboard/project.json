@@ -5,6 +5,11 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "test": {}
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest --config apps/dashboard/vitest.config.ts"
+      }
+    }
   }
 }
