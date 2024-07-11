@@ -9,6 +9,7 @@ import deprecatedPlugin from 'eslint-plugin-deprecation';
 import eslintPluginJest from 'eslint-plugin-jest';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -20,10 +21,13 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
+const appsConfigs = getProjectConfigs('apps');
+const libsConfigs = getProjectConfigs('libs');
+
 const config = [
   eslintConfigPrettier,
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*{.,spec.,test.}{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       // parserOptions: {
@@ -35,7 +39,10 @@ const config = [
       //   tsconfigRootDir: __dirname,
       // },
       parserOptions: {
-        project: ['./tsconfig.base.json'],
+        // project: ['./tsconfig.base.json'],
+        project: './tsconfig.base.json',
+        // project: ['./tsconfig.json'],
+        // project: ['./apps/dashboard/tsconfig.json'],
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -120,9 +127,31 @@ const config = [
       '**/.storybook',
     ],
   },
+  ...appsConfigs,
+  ...libsConfigs,
 ];
 
 export default config;
+
+function getProjectConfigs(dirPath) {
+  const fullPath = path.join(__dirname, dirPath);
+  return fs
+    .readdirSync(fullPath)
+    .filter((dir) => {
+      return fs.statSync(path.join(fullPath, dir)).isDirectory();
+    })
+    .map((project) => ({
+      files: [`${dirPath}/${project}/**/*.{ts,tsx}`],
+      languageOptions: {
+        parserOptions: {
+          project: path.join(fullPath, project, 'tsconfig.json'),
+        },
+      },
+      rules: {
+        // Project-specific rules
+      },
+    }));
+}
 
 // import { FlatCompat } from '@eslint/eslintrc';
 // import js from '@eslint/js';

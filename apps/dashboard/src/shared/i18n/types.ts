@@ -1,4 +1,4 @@
-import { locales, pathnames } from './config';
+import { locales, pathnames } from '@/shared/i18n/config';
 
 export type Locale = (typeof locales)[number];
 

@@ -8,7 +8,6 @@ import type { Locale } from '@/shared/i18n/types';
 import { font } from '@/shared/lib/font/font';
 import { ReactNode } from 'react';
 import LocaleProvider from './LocaleProvider';
-import StoreProvider from './StoreProvider';
 import ThemeProvider from './ThemeProvider';
 import './globalStyle.css';
 
@@ -30,19 +29,17 @@ export default async function Root({
       style={{ colorScheme: app.theme?.dark }}
     >
       <body className={font.className}>
-        <StoreProvider>
-          <LocaleProvider
-            messages={messages}
-            locale={locale}
-            timeZone={timeZone}
-          >
-            <ThemeProvider theme={app.theme?.dark}>
-              <Sidebar />
-              {children}
-              <ThemePanel />
-            </ThemeProvider>
-          </LocaleProvider>
-        </StoreProvider>
+        <LocaleProvider
+          messages={messages}
+          locale={locale}
+          timeZone={timeZone}
+        >
+          <ThemeProvider theme={app.theme?.dark}>
+            <Sidebar />
+            {children}
+            <ThemePanel />
+          </ThemeProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

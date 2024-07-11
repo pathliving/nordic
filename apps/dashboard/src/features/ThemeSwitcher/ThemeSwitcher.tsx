@@ -3,7 +3,9 @@
 import { app } from '@/shared/config/app';
 import { PAGE_HOME } from '@/shared/constants/url';
 import { setCookie } from '@/shared/lib/cookie/setCookie';
-import { updateThemeAppearanceClass, useThemeContext } from '@radix-ui/themes';
+import {
+  /*updateThemeAppearanceClass,*/ useThemeContext,
+} from '@radix-ui/themes';
 import { useState } from 'react';
 
 type TTheme = 'light' | 'dark';
@@ -32,18 +34,24 @@ const ThemeSwitcher = () => {
     setTheme(selectedTheme);
     if (theme) {
       onAppearanceChange(theme);
-      updateThemeAppearanceClass(theme);
+      // updateThemeAppearanceClass(theme);
     }
 
     return { appearance, rest };
   };
 
   return theme === 'light' ? (
-    <button type="button" onClick={handleTheme}>
+    <button
+      type="button"
+      onClick={handleTheme}
+    >
       dark
     </button>
   ) : (
-    <button type="button" onClick={handleTheme}>
+    <button
+      type="button"
+      onClick={handleTheme}
+    >
       light
     </button>
   );
