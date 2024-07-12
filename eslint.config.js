@@ -86,17 +86,6 @@ const config = [
     },
   },
   {
-    files: [
-      'vitest.config.ts',
-      'vitest.base.config.ts',
-      'apps/**/vitest.config.ts',
-      'libs/**/vitest.config.ts',
-    ],
-    rules: {
-      '@nx/enforce-module-boundaries': 'off',
-    },
-  },
-  {
     files: ['src/**/*.spec.ts'],
     plugins: { jest: eslintPluginJest },
     languageOptions: {

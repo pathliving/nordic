@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "ui": ["libs/ui/src/index.ts"]
+      //   "@/*": ["src/*"],
+      //   "vitest.setup": ["./vitest.setup.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

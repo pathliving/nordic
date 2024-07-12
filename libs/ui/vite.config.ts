@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+// import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
 import { dirname, extname, relative, resolve } from 'path';
@@ -57,12 +57,41 @@ export default defineConfig({
       ),
     }),
     libInjectCss(),
-    nxViteTsPaths(),
+    // nxViteTsPaths(),
+    // nxViteTsPaths({
+    //   projects: ['libs/ui/tsconfig.spec.json'], // Ensure this is set
+    // }),
   ],
   resolve: {
     alias: {
-      '@': resolve(dirname(fileURLToPath(import.meta.url)), './src'),
+      '@': resolve(dirname(fileURLToPath(import.meta.url)), './src/'),
+      // '@': resolve(__dirname, 'src/'),
+      // '@': resolve(__dirname, 'src/'),
     },
+  },
+  // test: {
+  // setupFiles: ['../../vitest.setup.ts'],
+  // setupFiles: [resolve(__dirname, '../../vitest.setup.ts')],
+  // },
+  test: {
+    globals: true,
+    // globals: {
+    //   'ts-jest': {
+    //     tsconfig: process.env.TS_CONFIG || './tsconfig.json', // Adjust path if necessary
+    //   },
+    // },
+    environment: 'jsdom',
+    setupFiles: ['./vitest.setup.ts'],
+    // setupFiles: [resolve(__dirname, 'vitest.setup.ts')],
+    // setupFiles: ['../../vitest.setup.ts'],
+    reporters: ['default'],
+    coverage: {
+      reporter: ['text', 'lcov'],
+      include: ['./src/**/*.{ts,tsx,js,jsx}'],
+      exclude: ['node_modules', 'dist'],
+    },
+    // css: false,
+    // workspace: './vitest.workspace.ts',
   },
 });
 
