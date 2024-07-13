@@ -6,7 +6,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/libs/ui',
+  cacheDir: '../../node_modules/.vite/apps/showcase',
 
   plugins: [nxViteTsPaths()],
 
@@ -23,12 +23,13 @@ export default defineConfig({
 
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../coverage/libs/ui',
+      reportsDirectory: '../../coverage/apps/showcase',
       provider: 'v8',
     },
 
     setupFiles: './vitest.setup.ts',
   },
+
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src/'),

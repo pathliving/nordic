@@ -4,7 +4,5 @@
   "sourceRoot": "apps/showcase",
   "projectType": "application",
   "tags": [],
-  "targets": {
-    "test": {}
-  }
+  "targets": {}
 }

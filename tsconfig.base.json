@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ui": ["libs/ui/src/index.ts"]
-      //   "@/*": ["src/*"],
-      //   "vitest.setup": ["./vitest.setup.ts"]
+      "@nordic/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

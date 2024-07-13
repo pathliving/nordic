@@ -3,15 +3,16 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": [
-      "@testing-library/jest-dom",
-      "vite/client",
       "vitest/globals",
-      "vitest",
-      "node"
-    ],
-    "jsx": "react-jsx"
+      "vitest/importMeta",
+      "vite/client",
+      "node",
+      "vitest"
+    ]
   },
   "include": [
+    "vite.config.ts",
+    "vitest.config.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.tsx",

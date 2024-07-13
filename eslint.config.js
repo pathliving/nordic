@@ -6,7 +6,6 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import deprecatedPlugin from 'eslint-plugin-deprecation';
-import eslintPluginJest from 'eslint-plugin-jest';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import fs from 'fs';
@@ -69,6 +68,7 @@ const config = [
         {
           enforceBuildableLibDependency: true,
           allow: [],
+          // Read more: https://nx.dev/getting-started/tutorials/react-monorepo-tutorial#imposing-constraints-with-module-boundary-rules
           depConstraints: [
             {
               sourceTag: '*',
@@ -83,22 +83,6 @@ const config = [
       '@typescript-eslint/no-unsafe-argument': 'warn',
       '@typescript-eslint/no-unsafe-return': 'off',
       'no-console': 'error',
-    },
-  },
-  {
-    files: ['src/**/*.spec.ts'],
-    plugins: { jest: eslintPluginJest },
-    languageOptions: {
-      globals: eslintPluginJest.environments.globals.globals,
-    },
-    rules: {
-      'jest/valid-expect': [
-        'error',
-        {
-          alwaysAwait: true,
-        },
-      ],
-      'jest/prefer-to-be': 'error',
     },
   },
   ...compat

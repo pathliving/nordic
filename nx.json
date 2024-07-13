@@ -79,22 +79,5 @@
         "config": "vitest.config.ts"
       }
     }
-  },
-  "projects": {
-    "dashboard": {
-      "tags": ["dashboard"]
-    },
-    "showcase": {
-      "tags": ["showcase"]
-    },
-    "dashboard-e2e": {
-      "tags": ["dashboard-e2e"]
-    },
-    "showcase-e2e": {
-      "tags": ["showcase-e2e"]
-    },
-    "ui": {
-      "tags": ["ui"]
-    }
   }
 }

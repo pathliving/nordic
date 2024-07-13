@@ -63,7 +63,26 @@ export default defineConfig({
 });
  */
 
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+/// -----------
+
+// let includePatterns = ['src/**/*.test.{ts,tsx}', 'src/**/*.spec.{ts,tsx}'];
+
+// if (project) {
+//   includePatterns = [
+//     `libs/${project}/src/**/*.test.{ts,tsx}`,
+//     `libs/${project}/src/**/*.spec.{ts,tsx}`,
+//     `apps/${project}/src/**/*.test.{ts,tsx}`,
+//     `apps/${project}/src/**/*.spec.{ts,tsx}`,
+//   ];
+// }
+
+// const coverage = {
+//   reporter: ['text', 'lcov'],
+//   include: ['src/**/*.{ts,tsx,js,jsx}'],
+//   exclude: ['node_modules', 'dist'],
+// }
+
+/*// import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 // import alias from '@rollup/plugin-alias';
 import react from '@vitejs/plugin-react';
 import { dirname, resolve } from 'path';
@@ -73,11 +92,13 @@ import { defineConfig } from 'vitest/config';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const project = process.env.NX_PROJECT_NAME;
+
 export default defineConfig({
   // plugins: [react(), nxViteTsPaths()],
   plugins: [
     react(),
-    nxViteTsPaths(),
+    // nxViteTsPaths(),
     // alias({
     //   entries: [
     //     { find: '@/', replacement: `${process.cwd()}/src/` }, // Adjust path if necessary
@@ -86,6 +107,7 @@ export default defineConfig({
     // }),
   ],
   test: {
+    include: includePatterns,
     globals: true,
     // globals: {
     //   'ts-jest': {
@@ -96,17 +118,63 @@ export default defineConfig({
     // setupFiles: ['./vitest.setup.ts'],
     setupFiles: [resolve(__dirname, 'vitest.setup.ts')],
     reporters: ['default'],
-    coverage: {
-      reporter: ['text', 'lcov'],
-      include: ['src/**/*.{ts,tsx,js,jsx}'],
-      exclude: ['node_modules', 'dist'],
-    },
+    coverage: coverage,
     // css: false,
     // workspace: './vitest.workspace.ts',
   },
-  // resolve: {
-  //   alias: {
-  //     '@': resolve(__dirname, 'src/'),
-  //   },
-  // },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src/'),
+      //     '@': resolve(dirname(fileURLToPath(import.meta.url)), './src/'),
+    },
+  },
+});*/
+
+/// -----------
+
+import react from '@vitejs/plugin-react';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { defineConfig } from 'vitest/config';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const project = process.env.NX_PROJECT_NAME;
+let includePatterns;
+
+if (project) {
+  includePatterns = [
+    `libs/${project}/src/**/*.test.{ts,tsx}`,
+    `libs/${project}/src/**/*.spec.{ts,tsx}`,
+    // `libs/${project}/src/components/Button/Button.spec.tsx`,
+    `apps/${project}/src/**/*.test.{ts,tsx}`,
+    `apps/${project}/src/**/*.spec.{ts,tsx}`,
+  ];
+} else {
+  includePatterns = ['src/**/*.test.{ts,tsx}', 'src/**/*.spec.{ts,tsx}'];
+}
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    // include: includePatterns,
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: [resolve(__dirname, 'vitest.setup.ts')],
+    reporters: ['default'],
+    coverage: {
+      reporter: ['text', 'lcov'],
+      exclude: ['node_modules', 'dist'],
+      reportsDirectory: '../../coverage/<project-root>',
+      provider: 'v8',
+    },
+    // logLevel: 'debug',
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src/'),
+    },
+  },
 });

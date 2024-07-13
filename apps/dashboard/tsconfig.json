@@ -22,7 +22,8 @@
     ],
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["vite/client", "vitest"]
   },
   "include": [
     "next-env.d.ts",

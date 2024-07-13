@@ -1,23 +1,35 @@
-// export default ['libs/*'];
-
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 import { defineWorkspace } from 'vitest/config';
 
-export default defineWorkspace([
-  //   'node/**',
-  //   'tools/**',
-  'libs',
+const workspaces = [
   {
-    plugins: [nxViteTsPaths()],
     test: {
       globals: true,
+      environment: 'jsdom',
+      include: [
+        'libs/**/*.{test,spec}.{ts,tsx,js,jsx}',
+        'apps/**/*.{test,spec}.{ts,tsx,js,jsx}',
+      ],
+      exclude: [
+        '**/node_modules/**/*',
+        '**/.next/**/*',
+        // 'libs/ui/**'
+        // 'packages/embeds/**/*',
+        // 'packages/lib/hooks/**/*',
+        // 'packages/platform/**/*',
+        // 'apps/api/v2/**/*',
+      ],
+      // name: 'ui',
+      //   setupFiles: ['./vitest.setup.ts'],
+    },
+    resolve: {
+      alias: {
+        '@': resolve(dirname(fileURLToPath(import.meta.url)), './src'),
+        // '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
   },
-  //   'library/**',
-  //   {
-  //     plugins: [nxViteTsPaths()],
-  //     test: {
-  //       globals: true,
-  //     },
-  //   },
-]);
+];
+
+export default defineWorkspace(workspaces);
