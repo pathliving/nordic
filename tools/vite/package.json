@@ -1,0 +1,15 @@
+{
+  "name": "@nordic/vite",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./preset": {
+      "import": "./src/preset.ts",
+      "require": "./src/preset.ts"
+    }
+  }
+}

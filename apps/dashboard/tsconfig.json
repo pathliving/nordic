@@ -21,7 +21,9 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@nordic/vite": ["../../tools/vite/src/index.ts"],
+      "@nordic/vite/*": ["../../tools/vite/src/*"]
     },
     "types": ["vite/client", "vitest"]
   },

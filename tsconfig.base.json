@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nordic/ui": ["libs/ui/src/index.ts"]
+      "@nordic/ui": ["libs/ui/src/index.ts"],
+      "@nordic/vite": ["tools/vite/src/index.ts"],
+      "@nordic/vite/*": ["tools/vite/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
