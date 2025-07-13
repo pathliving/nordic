@@ -1,9 +1,8 @@
-// export * from './lib/vite';
+import { defineConfig, UserConfig } from 'vite';
 
-// tools/vite-config/src/index.ts
-import { defineConfig } from 'vite';
+// Minimal base config for Vite
+export function getBaseViteConfig(): UserConfig {
+  return defineConfig({});
+}
 
-export const getBaseViteConfig = () => defineConfig({
-  // Common Vite configuration options
-  // ...
-});
+export * from './preset';

@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const env = createEnv({
   shared: {
-    HOST_URL: z.string().url(),
+    NEXT_PUBLIC_HOST_URL: z.string().url(),
     PORT: z.coerce.number().optional().default(3000),
   },
   server: {
@@ -16,7 +16,7 @@ export const env = createEnv({
     NEXT_PUBLIC_DEFAULT_THEME: z.enum(['dark', 'light']).default('dark'),
   },
   runtimeEnv: {
-    HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
+    NEXT_PUBLIC_HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
     PORT: process.env.PORT,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_DEFAULT_THEME: process.env.NEXT_PUBLIC_DEFAULT_THEME,

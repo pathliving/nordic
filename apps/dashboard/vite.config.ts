@@ -1,8 +1,8 @@
 /// <reference types='vitest' />
-import { defineConfig, mergeConfig } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { resolve } from 'path';
-import { getVitePreset } from '@nordic/vite/preset';
+import { defineConfig, mergeConfig } from 'vite';
+import { getVitePreset } from '../../tools/vite/src/preset';
 
 export default defineConfig((configEnv) => {
   const baseConfig = getVitePreset()(configEnv);
@@ -40,5 +40,5 @@ export default defineConfig((configEnv) => {
         '@': resolve(__dirname, 'src/'),
       },
     },
-  })
+  });
 });

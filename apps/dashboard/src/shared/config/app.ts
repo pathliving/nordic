@@ -6,7 +6,9 @@ export const app: AppConfig = {
   title: 'Nordic',
   description: 'Experimental project',
   applicationName: 'Nordic app',
-  url: new URL(env.HOST_URL || 'https://nordic-example-template.io'),
+  url: new URL(
+    env.NEXT_PUBLIC_HOST_URL || 'https://nordic-example-template.io'
+  ),
   rootUrl: PAGE_HOME,
   api: env.NEXT_PUBLIC_API_URL,
   socialImagePath: '/images/social-media-cover.jpg',

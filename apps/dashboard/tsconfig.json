@@ -3,7 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,7 +17,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
@@ -21,11 +25,20 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"],
-      "@nordic/vite": ["../../tools/vite/src/index.ts"],
-      "@nordic/vite/*": ["../../tools/vite/src/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@nordic/vite": [
+        "../../tools/vite/src/index.ts"
+      ],
+      "@nordic/vite/*": [
+        "../../tools/vite/src/*"
+      ]
     },
-    "types": ["vite/client", "vitest"]
+    "types": [
+      "vite/client",
+      "vitest"
+    ]
   },
   "include": [
     "next-env.d.ts",
